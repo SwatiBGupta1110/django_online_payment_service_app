@@ -1,0 +1,26 @@
+{
+  "gbp": {
+    "gbp": 1,
+    "dollars": 1.30,
+    "euros": 1.20,
+    "inr": 101
+  },
+  "dollars": {
+    "gbp": 0.80,
+    "dollars": 1,
+    "euros": 0.90,
+    "inr": 82
+  },
+  "euros": {
+    "dollars": 1.10,
+    "gbp": 0.90,
+    "euros": 1,
+    "inr": 90
+  },
+  "inr": {
+    "gbp": 0.009,
+    "dollars": 0.012,
+    "euros": 0.011,
+    "inr": 1
+  }
+}

@@ -1,0 +1,37 @@
+{% extends 'home/base.html' %}
+
+{% block title %}Contact{% endblock title %}
+
+{% block body %}
+    <div class="container-fluid px-0 mb-3" >
+        <img src="/static/contactus.jpg" class="d-block" alt="..." style="height:80%; width:90%;margin: 40px auto 0px;">
+    </div>
+    <div class="container mb-3 py-4">
+        <h1 class="text-center">Contact Us</h1>
+        <form method="post" action="home/urls/contact">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Enter your Name">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter Your Email">
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="phone" class="form-control" id="phone" name="phone" placeholder="Enter Your Phone Number">
+            </div>
+
+            <div class="form-group">
+                <label for="desc">Please describe your query below. Our customer service will reach out to you within 24 hrs.</label>
+                <textarea class="form-control" id="desc" rows="3" name="desc"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+
+    </div>
+
+{% endblock body %}

@@ -1,0 +1,19 @@
+{% extends 'register/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+    Create a User Account
+{% endblock %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <h1 class="h3 mb-3 font-weight-normal">Signup Here</h1>
+    <form method="post" class="form-group">
+        {% csrf_token %}
+        {{ register_user | crispy }}
+        <button class="btn btn-outline-success my-2 my-sm-0" type="submit" style="margin-left: 20px;">Create Account</button>
+        <a href="{% url 'login' %}" >I already have account</a>
+    </form>
+{% endblock %}
+

@@ -1,0 +1,39 @@
+{% extends 'register/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+    Users Sent Amount
+{% endblock %}
+
+{% block content %}
+
+    {% if user.is_authenticated %}
+        <br>
+        <div style="max-width: 800px; margin: 40px auto 0; padding: 40px; box-sizing: border-box; background-color: white; box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); border-radius: 5px;">
+            <h1 style="text-align: center; margin-bottom: 40px;">User Send Money Transactions</h1>
+            <table style="border-collapse: collapse; width: 100%;">
+                <tr>
+                    <th>UserEmail</th>
+                    <th>UserCurrency</th>
+                    <th>UserAmount</th>
+                    <th>PayeeEmail</th>
+                    <th>PayeeCurrency</th>
+                    <th>Amount Transferred to Payee</th>
+                </tr>
+                <tr>
+                    <td>{{ src_email }}</td>
+                    <td>{{ src_currency }}</td>
+                    <td>{{ src_amount }}</td>
+                    <td>{{ payee_email }}</td>
+                    <td>{{ payee_currency }}</td>
+                    <td>{{ payee_amount }}</td>
+                </tr>
+            </table>
+        </div>
+    {% endif %}
+
+{% endblock %}
+
+
+
+

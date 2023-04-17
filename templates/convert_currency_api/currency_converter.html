@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Currency Converter</title>
+    <style>
+        body {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .form-container {
+            display: inline-block;
+            text-align: left;
+            border: 1px solid black;
+            padding: 20px;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+        }
+
+        .form-container label,
+        .form-container input[type=text] {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .form-container input[type=text] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .form-container button[type=submit] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .form-container button[type=submit]:hover {
+            background-color: #3e8e41;
+        }
+
+        .result-container {
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>Currency Converter</h1>
+<div class="form-container">
+    <form method="get">
+        <label for="currency1">Currency 1:</label>
+        <input type="text" id="currency1" name="currency1" required>
+
+        <label for="currency2">Currency 2:</label>
+        <input type="text" id="currency2" name="currency2" required>
+
+        <label for="amount_of_currency1">Amount of Currency 1:</label>
+        <input type="text" id="amount_of_currency1" name="amount_of_currency1" required>
+
+        <button type="submit">Convert</button>
+    </form>
+</div>
+
+{% if rate and converted_amount %}
+    <div class="result-container">
+        <p>Rate: {{ rate }}</p>
+        <p>Converted Amount: {{ converted_amount }}</p>
+    </div>
+{% endif %}
+
+{% if error_message %}
+    <div class="result-container">
+        <p>Error: {{ error_message }}</p>
+    </div>
+{% endif %}
+</body>
+</html>

@@ -1,0 +1,76 @@
+{% extends 'register/base.html' %}
+
+{% block title %}Home{% endblock title %}
+
+{% block content %}
+
+    <div class="container my-3">
+        <h1 class="my-4 text-center">Welcome to PayzApp</h1>
+        <!--p class="text-center">Your balance: {{ user.points }}</p>-->
+
+
+        <main class="container">
+            <div class="alert alert-success bg-body-tertiary p-2 rounded" style="margin-bottom: 40px;width: 50%;margin-left: 25%;">
+                <h2 style="text-align: center;">ACCOUNT BALANCE</h2>
+                <p class="lead" style="text-align: center;font-size: 40px;"><strong>100 GBP</strong></p>
+            </div>
+        </main>
+
+
+        <div class="row">
+            <div class="col-md-4 d-flex">
+                <div class="card mb-4 shadow-sm">
+                    <img src="/static/sendmoney.jpg" class="d-block w-100" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Send Payments</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button class="btn btn-primary"><a href="{% url 'amounttransfer' %}">Go To</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex">
+                <div class="card mb-4 shadow-sm">
+                    <img src="/static/viewtransactionhistory.jpg" class="d-block w-100" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">View Transaction History</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button class="btn btn-primary">Go To</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex">
+                <div class="card mb-4 shadow-sm">
+                    <img src="/static/sendrequestmoney.jpg" class="d-block w-100" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Send/Receive Payment Requests</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button class="btn btn-primary">Go To</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 d-flex">
+                <div class="card mb-4 shadow-sm">
+                    <img src="/static/differentforeigncurrency.jpg" class="d-block w-100" alt="...">
+                    <div class="card-body">
+                        <p class="card-text">Currency Conversion</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <button class="btn btn-primary"><a href="{% url 'currencyconverterpage' %}">Go To</a></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+{% endblock %}
