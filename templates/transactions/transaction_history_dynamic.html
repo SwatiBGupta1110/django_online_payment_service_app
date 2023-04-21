@@ -1,50 +1,69 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>User Transactions</title>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-        th, td {
-            text-align: left;
-            padding: 8px;
-            border-bottom: 1px solid #ddd;
-        }
-        th {
-            background-color: #4CAF50;
-            color: white;
-        }
-        tr:hover {
-            background-color: #f5f5f5;
-        }
-    </style>
-</head>
-<body>
-<h1>User Transactions</h1>
-<table>
-    <thead>
-    <tr>
-        <th>Username</th>
-        <th>Amount</th>
-        <th>Type</th>
-        <th>Date</th>
-    </tr>
-    </thead>
-    <tbody>
-    {% for transaction in transactions %}
-        <tr>
-            <td>{{ transaction.username }}</td>
-            <td>{{ transaction.amount }}</td>
-            <td>{{ transaction.type }}</td>
-            <td>{{ transaction.date }}</td>
-        </tr>
-    {% endfor %}
-    </tbody>
-</table>
-<script>
-    // any javascript code can be added here
-</script>
-</body>
-</html>
+{% extends 'register/base.html' %}
+{% load crispy_forms_filters %}
+
+{% block title %}
+    User Transactions
+{% endblock %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+        {% if transactions|length > 0 %}
+            <style>
+                table {
+                    border-collapse: collapse;
+                    width: 100%;
+                }
+                th, td {
+                    text-align: left;
+                    padding: 8px;
+                    border-bottom: 1px solid #ddd;
+                }
+                th {
+                    background-color: #4CAF50;
+                    color: white;
+                }
+                tr:hover {
+                    background-color: #f5f5f5;
+                }
+            </style>
+
+        <h2 style="text-align: center;">Transactions History</h2>
+
+        <table>
+            <thead>
+            <tr>
+                <th>User Email</th>
+                <th>User Currency</th>
+                <th>Transaction Email</th>
+                <th>Transaction Currency</th>
+                <th>Request ID</th>
+                <th>Amount</th>
+                <th>Status</th>
+                <th>Date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for transaction in transactions %}
+                <tr>
+                    <td>{{ transaction.payer_email_address }}</td>
+                    <td>{{ transaction.payer_currency }}</td>
+                    <td>{{ transaction.payee_email_address}}</td>
+                    <td>{{ transaction.payee_currency }}</td>
+                    <td>{{ transaction.request_id }}</td>
+                    <td>{{ transaction.amount_to_transfer_to_payee }}</td>
+                    <td>{{ transaction.status }}</td>
+                    <td>{{ transaction.date }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        <script>
+            // any javascript code can be added here
+        </script>
+        {% else %}
+            <h5>There are no transactions for user: <em>{{user.username}}</em>.</h5>
+        {% endif %}
+    {% else %}
+        <h5>Transactions Homepage. Please login to start ...</h5>
+    {% endif %}
+{% endblock %}

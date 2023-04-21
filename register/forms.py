@@ -23,12 +23,6 @@ class RegisterUser(UserCreationForm):
     primarycurrency = forms.CharField(label='Choose your primary currency here',
                                       widget=forms.Select(choices=CURRENCY_CHOICES),
                                       required=True)
-    # username = forms.CharField(label='username', min_length=5, max_length=150)
-    # address = forms.CharField(label="Address", max_length=100,required=False)
-    # age = forms.IntegerField(label="Age", max_value=100,required=False)
-    # password1 = forms.CharField(label='password', widget=forms.PasswordInput)
-    # password2 = forms.CharField(label='Confirm password', widget=forms.PasswordInput)
-
     class Meta:
         model = User
         fields = ["firstname", "lastname", "email", "username", "primarycurrency",
@@ -45,7 +39,6 @@ class RegisterUser(UserCreationForm):
             if response.status_code == 200:
                 print(response.json())
                 data = response.json()
-                # rate = data['rate']
 
                 converted_amount = data['converted_amount']
                 Amount.objects.create(name=instance,primarycurrency=self.cleaned_data['primarycurrency'], amount=converted_amount,email=self.cleaned_data['email'])
@@ -55,17 +48,3 @@ class RegisterUser(UserCreationForm):
             converted_amount = amount_of_currency1
             Amount.objects.create(name=instance, primarycurrency=self.cleaned_data['primarycurrency'], amount=converted_amount, email=self.cleaned_data['email'])
         return instance
-
-
-    # def __str__(self):
-    #     return self.firstname + self.email
-
-
-    # def save(self, *args, **kwargs):
-    #     if self.primarycurrency!= "gbp":
-    #         target_currency=self.primarycurrency
-    #         amount_calculated=currency_converter("gbp", 1000, target_currency)
-    #         self.wallet_balance=amount_calculated
-    #     instance = super(RegisterUser, self).save(*args, **kwargs)
-    #     return instance
-

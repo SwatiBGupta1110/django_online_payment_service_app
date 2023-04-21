@@ -12,7 +12,7 @@
         <main class="container">
             <div class="alert alert-success bg-body-tertiary p-2 rounded" style="margin-bottom: 40px;width: 50%;margin-left: 25%;">
                 <h2 style="text-align: center;">ACCOUNT BALANCE</h2>
-                <p class="lead" style="text-align: center;font-size: 40px;"><strong>100 GBP</strong></p>
+                <p class="lead" style="text-align: center;font-size: 40px;"><strong>{{ user_amount }} {{user_currency}}</strong></p>
             </div>
         </main>
 
@@ -25,7 +25,7 @@
                         <p class="card-text">Send Payments</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button class="btn btn-primary"><a href="{% url 'amounttransfer' %}">Go To</a></button>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'amounttransfer' %}">Go To</a></button>
                             </div>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                         <p class="card-text">View Transaction History</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button class="btn btn-primary">Go To</button>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'viewtransactions' %}">Go To</a></button>
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                         <p class="card-text">Send/Receive Payment Requests</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button class="btn btn-primary">Go To</button>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'requestmoneypage' %}">Go To</a></button>
                             </div>
                         </div>
                     </div>
@@ -64,7 +64,7 @@
                         <p class="card-text">Currency Conversion</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <button class="btn btn-primary"><a href="{% url 'currencyconverterpage' %}">Go To</a></button>
+                                <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><a href="{% url 'currencyconverterpage' %}">Go To</a></button>
                             </div>
                         </div>
                     </div>

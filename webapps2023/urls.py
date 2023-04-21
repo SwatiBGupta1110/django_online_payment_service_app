@@ -34,20 +34,20 @@ admin.site.index_title = "Welcome to Payzapp"
 
 """
 Name: Badri Gupta
-email: badrigupta@gmail.com
-username: badrijagannath
+username: badrijagannathgupta
+email: badri@gmail.com
 Password: seemagupta05
 Currency : GBP
 
 Name: Seema Gupta
-email: seema@gmail.com
 username: seemabadrigupta
-Password: husband@21
+email: seema@gmail.com
+Password: mybirthday0501
 Currency : GBP
 
 Name: Akshay Gupta
+username: akshaybadrigupta
 email: akshay@gmail.com
-username: akshay23
 Password: golu200223
 Currency : Dollars
 
@@ -63,6 +63,8 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("", home_views.index, name="home"),
     path("", include("home.urls", namespace="home")),
+    # path("about/", home_views.about, name="about"),
+    #path("contact/", home_views.contact, name="contact"),
     path("register_user/", include("register.urls", namespace="register")),
     # path("register_user/", register_views.register_user, name="register_user"),
     path("login/", register_views.login_user, name="login"),
@@ -73,6 +75,8 @@ urlpatterns = [
     path("conversionpage/", currencyconverter_views.currency_converter_page, name="currencyconverterpage"),
     path("amounttransfer/", transactions_views.amount_transfer, name="amounttransfer"),
     path("getpayerlist/", transactions_views.get_all_payers, name="getpayerlist"),
-    # path("example/", MyView.as_view(),
-    #      name="currencyconverter"),
+    path("requestmoneypage/", transactions_views.request_money_page, name="requestmoneypage"),
+    path("request_money/", transactions_views.request_money, name="requestmoney"),
+    path("accept_reject_money_request/", transactions_views.accept_reject_money_request, name="acceptrejectmoneyrequest"),
+    path("view_transactions/", transactions_views.view_transactions, name="viewtransactions"),
 ]

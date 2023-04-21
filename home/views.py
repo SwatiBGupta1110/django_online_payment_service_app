@@ -12,6 +12,8 @@ def about(request):
 
 def contact(request):
     if request.method == "POST":
+        print(request.path)
+        print(request.POST)
         name = request.POST.get('name')
         email = request.POST.get('email')
         phone = request.POST.get('phone')
@@ -19,4 +21,5 @@ def contact(request):
         contact = Contact(name=name, email=email, phone=phone, desc=desc, date=datetime.today())
         contact.save()
         messages.success(request, 'Your message has been sent!')
+        return render(request, "home/index.html")
     return render(request, "home/contact.html")
