@@ -14,6 +14,10 @@ from django.http import JsonResponse, HttpResponse, HttpResponseBadRequest, Http
 # path("conversion/<str:currency1>/<str:currency2>/<str:amount_of_currency1>/",
 from rest_framework import generics
 
+"""
+This class is responsible for getting queryset from Rate model and implements the logic of get api
+responsible in currency conversion.
+"""
 class CurrencyConverter(generics.ListCreateAPIView):
     serializer_class = RateSerializer
     queryset = Rate.objects.all()
@@ -24,15 +28,23 @@ class CurrencyConverter(generics.ListCreateAPIView):
         amount_of_currency1 = float(self.kwargs['amount_of_currency1'])
 
         try:
+            # This query filters the currency given and gives the rate related to it.
             rate = float(Rate.objects.get(currency1=currency1, currency2=currency2).rate)
         except Rate.DoesNotExist:
             return Response({'error': 'One or both currencies not supported'}, status=status.HTTP_400_BAD_REQUEST)
 
+        #converts the amount received by multiplying by rate queried from model
         converted_amount = round(amount_of_currency1 * rate, 4)
         data = {'rate': rate, 'converted_amount': converted_amount}
         return Response(data)
 
 
+"""
+This view function can only be accessed by logged in user.
+This function is responsible for calling the get api in this page which gives the converted amount and rate 
+if currency are given, by default base currency is gbp here.
+# This is an extra functionality implemented by me.
+"""
 @login_required(login_url='login')
 def currency_converter_page(request):
     if request.method == 'GET':

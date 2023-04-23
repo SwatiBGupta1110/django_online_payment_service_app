@@ -5,6 +5,9 @@ from datetime import datetime
 import requests
 # Create your models here.
 
+"""
+Amount model saves the main balance of the user account and their currency.
+"""
 class Amount(models.Model):
 
     name = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -16,6 +19,10 @@ class Amount(models.Model):
         return f"{self.name},{self.primarycurrency}, {self.amount}"
 
 
+"""
+MoneyTransfer model has all the data related to user transaction, status of request, their currency, email id of
+payer and payee, amount to be transferred. and generated a unique request id when user sends money and also saves date.
+"""
 class MoneyTransfer(models.Model):
     STATUS_CHOICES = (
         ('sent', 'Sent'),

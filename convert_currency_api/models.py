@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+# Rate models saves all the conversion rates of different currencies avaialble in this app which are usd, euros, gbp, inr.
 class Rate(models.Model):
     currency1 = models.CharField(max_length=200, default="gbp")
     currency2 = models.CharField(max_length=200, default="gbp")

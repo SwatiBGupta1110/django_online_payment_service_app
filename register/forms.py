@@ -16,6 +16,13 @@ CURRENCY_CHOICES= [
     ('inr', 'INR'),
 ]
 
+"""
+This class is resposnible for creating a form for user with the help of UserCreationForm.
+which will help us in sanity check of data before saving it, we create all given fields here.
+ ["firstname", "lastname", "email", "username", "primarycurrency",
+                  "password1", "password2"]
+Do the currency conversion if the user currency is not gbp and save the converted currency to Amount model
+"""
 class RegisterUser(UserCreationForm):
     firstname = forms.CharField(label="First name", max_length=100,required=True)
     lastname = forms.CharField(label="Last name", max_length=100,required=True)
@@ -33,6 +40,8 @@ class RegisterUser(UserCreationForm):
         currency_1 = currency_2 = "gbp"
         currency_2 = self.cleaned_data['primarycurrency']
         amount_of_currency1 = 1000
+        # cert_path = "D:/SUSSEX/SEM_2/Web_Applications_And_Services/Assignment/webapps2023/localhost.crt"
+        # key_path = "D:/SUSSEX/SEM_2/Web_Applications_And_Services/Assignment/webapps2023/localhost.key"
         if currency_1 != currency_2:
             money_conversion_api = f"http://127.0.0.1:8000/conversion/{currency_1}/{currency_2}/{amount_of_currency1}/"
             response = requests.get(money_conversion_api)

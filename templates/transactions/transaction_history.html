@@ -4,7 +4,7 @@
 {% block title %}
     User Transactions
 {% endblock %}
-
+<!-- Displays Transaction history table for user-->
 {% block content %}
     {% if user.is_authenticated %}
         {% if transactions|length > 0 %}

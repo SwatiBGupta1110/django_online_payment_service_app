@@ -4,6 +4,11 @@ from convert_currency_api.views import CurrencyConverter
 
 app_name = 'convert_currency_api'
 # path('comment/<int:pk>', CommentDetail.as_view()),
+
+"""
+This is a get api which has format as  https://127.0.0.1:8000/conversion/euros/inr/80/ .
+where currency1 and currency2 are sting and amount_of_currency1 is a float amount.
+"""
 urlpatterns = [
     # baseURL/conversion/{currency1}/{currency2}/{amount_of_currency1}
     #http://127.0.0.1:8000/conversion/euros/inr/80/

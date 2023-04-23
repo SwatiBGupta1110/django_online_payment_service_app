@@ -4,7 +4,7 @@
 {% block title %}
     User Transactions
 {% endblock %}
-
+<!-- owed money page shows table for owed money request-->
 {% block content %}
     {% if user.is_authenticated %}
         {% if owed_money_requests|length > 0 %}

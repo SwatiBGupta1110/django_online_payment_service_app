@@ -4,7 +4,7 @@
 {% block title %}
     User Sent Amount
 {% endblock %}
-
+<!-- Amount Page dispalys the transfer amount data-->
 {% block content %}
     {% if user.is_authenticated %}
             <style>
@@ -46,7 +46,7 @@
                         <td>{{ src_amount}}</td>
                         <td>{{ payee_email }}</td>
                         <td>{{ payee_currency }}</td>
-                        <td>{{ payee_amount}}</td>
+                        <td>{{ amount_transferred_to_payee}}</td>
                     </tr>
                 </tbody>
             </table>

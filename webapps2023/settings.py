@@ -30,7 +30,7 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# All apps and packages are defined here
 INSTALLED_APPS = [
     "home.apps.HomeConfig",
     "register.apps.RegisterConfig",
@@ -84,10 +84,11 @@ WSGI_APPLICATION = "webapps2023.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.webapps",
+        "NAME": BASE_DIR / "db.webapps",     # database name
     }
 }
 
@@ -129,9 +130,22 @@ STATICFILES_DIRS = [
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
+# Redirect all HTTP requests to HTTPS
+# SECURE_SSL_REDIRECT = True
+
+# Set the SECURE_PROXY_SSL_HEADER to tell Django that the HTTPS connection is being handled by a reverse proxy
+# SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# Set the paths to your SSL certificate and key
+# SSL_CERTIFICATE = "D:/SUSSEX/SEM_2/Web_Applications_And_Services/Assignment/webapps2023/localhost.crt"
+#
+# SSL_KEY = "D:/SUSSEX/SEM_2/Web_Applications_And_Services/Assignment/webapps2023/localhost.key"
+
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
 
-RUNSERVERPLUS_SERVER_ADDRESS_PORT = "0.0.0.0:8000"
+RUNSERVERPLUS_SERVER_ADDRESS_PORT = '0.0.0.0:8000'  #port number
+
+# CSRF_COOKIE_SECURE = True

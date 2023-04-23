@@ -60,23 +60,20 @@ currency: INR
 
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("", home_views.index, name="home"),
-    path("", include("home.urls", namespace="home")),
-    # path("about/", home_views.about, name="about"),
-    #path("contact/", home_views.contact, name="contact"),
-    path("register_user/", include("register.urls", namespace="register")),
-    # path("register_user/", register_views.register_user, name="register_user"),
-    path("login/", register_views.login_user, name="login"),
-    path("logout/", register_views.logout_user, name="logout"),
-    path("dashboard/", register_views.dashboard_page, name="dashboard"),
+    path("admin/", admin.site.urls),  #Django admin site page path
+    path("", home_views.index, name="home"),  # Home page path
+    path("", include("home.urls", namespace="home")), # Imports endpoint for about and contact page
+    path("register_user/", include("register.urls", namespace="register")), # Endpoint for register page
+    path("login/", register_views.login_user, name="login"), #Endpoint for login page
+    path("logout/", register_views.logout_user, name="logout"),#Endpoint for logout page
+    path("dashboard/", register_views.dashboard_page, name="dashboard"),#Endpoint for dashboard page
     path("conversion/<str:currency1>/<str:currency2>/<str:amount_of_currency1>/", CurrencyConverter.as_view(),
-         name="currencyconverter"),
-    path("conversionpage/", currencyconverter_views.currency_converter_page, name="currencyconverterpage"),
-    path("amounttransfer/", transactions_views.amount_transfer, name="amounttransfer"),
-    path("getpayerlist/", transactions_views.get_all_payers, name="getpayerlist"),
-    path("requestmoneypage/", transactions_views.request_money_page, name="requestmoneypage"),
-    path("request_money/", transactions_views.request_money, name="requestmoney"),
-    path("accept_reject_money_request/", transactions_views.accept_reject_money_request, name="acceptrejectmoneyrequest"),
-    path("view_transactions/", transactions_views.view_transactions, name="viewtransactions"),
+         name="currencyconverter"), #Currency conversion api
+    path("conversionpage/", currencyconverter_views.currency_converter_page, name="currencyconverterpage"), #Endpoint for currency conversion page
+    path("amounttransfer/", transactions_views.amount_transfer, name="amounttransfer"),#Endpoint for amount transfer page
+    path("getpayerlist/", transactions_views.get_all_payers, name="getpayerlist"), #Endpoint for getting all payers list
+    path("requestmoneypage/", transactions_views.request_money_page, name="requestmoneypage"),#Endpoint for loading request money page data
+    path("request_money/", transactions_views.request_money, name="requestmoney"),#Endpoint for requesting money
+    path("accept_reject_money_request/", transactions_views.accept_reject_money_request, name="acceptrejectmoneyrequest"),#Endpoint for accept reject request
+    path("view_transactions/", transactions_views.view_transactions, name="viewtransactions"), # endpoint for all transactions
 ]

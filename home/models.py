@@ -1,6 +1,6 @@
 from django.db import models
 
-# Create your models here.
+# Contact models saves all the information related to user and ueer queries.
 class Contact(models.Model):
     name = models.CharField(max_length=200)
     email = models.CharField(max_length=200)
